@@ -63,6 +63,8 @@ localStorage.setItem('clientes', JSON.stringify(clientes))
 console.log(JSON.parse(localStorage.getItem('clientes')))*/
 
 let formProducto = document.getElementById('formProducto')
+let divProductos = document.getElementById('divProductos')
+
 let productos = []
 
 if(localStorage.getItem('productos')){
@@ -81,6 +83,39 @@ formProducto.addEventListener('submit', (e) => {
     productos.push(producto)
 
     localStorage.setItem('productos', JSON.stringify(productos))
+
+    formProducto.reset()
 })
 
+document.getElementById('botonMostrar').addEventListener('click', () => {
+    let productosParseados = JSON.parse(localStorage.getItem('productos'))
+    divProductos.innerHTML = ""
+    if(productosParseados.length != 0) {
+        productosParseados.forEach((producto, indice) => {
+            divProductos.innerHTML += `
+                <div class="card" id="producto${indice}" style="width: 18rem;margin:3px">
+                    <div class="card-body">
+                        <h5 class="card-title">${producto.nombre}</h5>
+                        <p class="card-text">Marca: ${producto.marca}</p>
+                        <p class="card-text">Precio: $${producto.precio}</p>
+                        <p class="card-text">Stock: ${producto.stock}</p>
+                        <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                </div>
+            `
+        })
 
+        productosParseados.forEach((producto, indice) => {
+           document.getElementById(`producto${indice}`).lastElementChild.lastElementChild.addEventListener('click', () => {
+              document.getElementById(`producto${indice}`).remove()
+              let index = productos.findIndex(productoA => productoA.nombre == producto.nombre)
+              productos.splice(index,1) 
+              localStorage.setItem('productos', JSON.stringify(productos))
+           })
+        })
+    } else {
+        divProductos.innerHTML = "<p>No se cargaron productos en el carrito</p>"
+    }
+    
+    
+})
