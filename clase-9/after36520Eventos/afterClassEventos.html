@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only BS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Clase 23 mayo - 14:00hs</title>
+</head>
+<body>
+    <h1>Eventos</h1>
+    <h2></h2>
+    <h4 style="text-decoration: underline; font-size: 24px;">Manejadores de Eventos</h4>
+    
+    <h5>Tercera forma - Directo HTML</h5>
+    <button ondblclick="holaComision36520()">Evento con atributo HTML</button>
+    <br><br>
+    <button ondblclick="holaComi()">Evento directo desde HTML</button>
+    <br><br>
+    <!-- <div style="font-size: 30px; width: 150px;" onmouseover="alert('Perdiste');">
+        No tocar
+    </div>  -->
+    <h5>Segunda forma - Semantica</h5>
+    <input id="nombre">
+    <button id="evento-semantico">Evento con manejador semántico</button>
+    <div id="container-semantico"></div>
+    <h5>Primera forma - Usada en clase y preferida(?) - Eventos múltiples</h5>
+    <button id="evento-multiple" >Evento con manejador múltiple</button>
+    
+    
+    <div class="container">
+        <div id="containerObjetos" class="row"></div>
+    </div>
+    <script src="afterEventos.js"></script>
+</body>
+</html>
